@@ -4,6 +4,7 @@ import main.java.calc.Calculator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class CalcTest {
 
@@ -12,7 +13,7 @@ public class CalcTest {
 
     // Return 0 for empty string.
     @Test
-    public void returnZeroIfEmpty(){
+    public void returnZeroIfEmpty() {
         assertEquals(0,Calculator.add(""));
     }
 
@@ -24,24 +25,36 @@ public class CalcTest {
 
     //  Return addition if two numbers are given as input
     @Test
-    public void returnSumForTwoNumbers(){
+    public void returnSumForTwoNumbers() {
         assertEquals(3, Calculator.add("1,2"));
     }
 
     // 2.
     @Test
-    public void returnSumForAllNumbers(){
+    public void returnSumForAllNumbers() {
         assertEquals(10, Calculator.add("1,2,3,4"));
     }
 
     // 3.
-    public void returnSumAndAllowNewLines(){
+    @Test
+    public void returnSumAndAllowNewLines() {
         assertEquals(6, Calculator.add("1\n2,3"));
     }
 
     // 4.
-    public void returnSumAndAllowDiffDelimiter(){
+    @Test
+    public void returnSumAndAllowDiffDelimiter() {
         assertEquals(3, Calculator.add("//;\n1;2"));
     }
 
+    //5.
+    @Test
+    public void exceptionOnNegativeInput() {
+        try {
+            Calculator.add("-1,1,4");
+            fail("Exception here");
+        } catch (Exception e) {
+            assertEquals("negatives not allowed - ", e.getMessage());
+        }
+    }
 }

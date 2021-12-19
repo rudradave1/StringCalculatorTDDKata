@@ -24,9 +24,24 @@ public class CalcTest {
 
     //  Return addition if two numbers are given as input
     @Test
-    public void returnSum(){
+    public void returnSumForTwoNumbers(){
         assertEquals(3, Calculator.add("1,2"));
     }
 
+    // 2.
+    @Test
+    public void returnSumForAllNumbers(){
+        assertEquals(10, Calculator.add("1,2,3,4"));
+    }
+
+    // 3.
+    public void returnSumAndAllowNewLines(){
+        assertEquals(6, Calculator.add("1\n2,3"));
+    }
+
+    // 4.
+    public void returnSumAndAllowDiffDelimiter(){
+        assertEquals(3, Calculator.add("//;\n1;2"));
+    }
 
 }

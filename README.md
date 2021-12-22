@@ -1,1 +1,2 @@
 # StringCalculatorTDDKata
+Completed the assesment.
